@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
@@ -146,4 +145,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
->>>>>>> 2b7724a13c7a879ad981a48cd9068a8bd07edfe0
+
+*.bak
+

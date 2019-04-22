@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserBusinessService} from '../../../business-service/user/user-business.service';
 import { AppService } from '../../../app.service';
 
 @Component({
@@ -11,3 +12,4 @@ export class UserInfoComponent {
     this.appService.titleEventEmitter.emit("个人资料");
   }
 }
+

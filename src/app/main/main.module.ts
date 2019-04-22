@@ -15,6 +15,8 @@ import { TreeviewMenuComponent }   from './treeview-menu.component';
 
 import { MainRoutingModule } from './main-routing.module';
 
+import { UserBusinessService} from '../business-service/user/user-business.service';
+
 
 /**
  * 主体模块
@@ -35,7 +37,7 @@ import { MainRoutingModule } from './main-routing.module';
      TreeviewMenuComponent
   ],
   exports:      [],
-  providers:    []
+  providers:    [UserBusinessService]
 })
 export class MainModule {
 }

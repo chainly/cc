@@ -1,4 +1,35 @@
-<<<<<<< HEAD
+# cc front-page
+
+## v1.base
+
+   # workspace
+   ng new cc
+
+## mark
+
+``` 类型: let key: type = value; 
+number
+string
+# array
+type[]
+[type1, type2...]
+Array<type>
+
+# Enum
+enum k {k1=v1, k2=v2...}
+
+# Any, void, undefined, null
+any
+
+```
+
+
+
+
+
+
+
+
 ## CC admin 
  一个基于angular5.0.0+ng-bootstrap1.0.0-beta.8+bootstrap4.0.0-beta.2+scss的后台管理系统界面
 
@@ -220,7 +251,5 @@ http://www.myopenresources.top/cc-client/#/login
 
 ## 许可
 1. [MIT](/LICENSE)
-=======
 # cc
 cc
->>>>>>> 2b7724a13c7a879ad981a48cd9068a8bd07edfe0

@@ -12,7 +12,7 @@
                         <div class="col-12">
                             <input class="form-control " type="text" formControlName="userName" placeholder="请输入用户名...">
                             <div class="c-validator-invalid" [hidden]="!(loginForm.controls['userName'].errors && loginForm.controls['userName'].dirty)">
-                                用户名必填，6-15位！
+                                用户名必填，1-15位！
                             </div>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                         <div class="col-12">
                             <input class="form-control" type="password" formControlName="password" placeholder="请输入密码...">
                             <div class="c-validator-invalid" [hidden]="!(loginForm.controls['password'].errors && loginForm.controls['password'].dirty)">
-                                密码必填，6-15位！
+                                密码必填，6-30位！
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                 </form>
                 <div class=" row">
                     <div class="col-12 text-right">
-                        <a href="#">忘记密码？</a>
+                        <a href="api/reset">忘记密码？</a>
                     </div>
                 </div>
                 <div class="row c-copy-right">

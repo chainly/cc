@@ -11,6 +11,12 @@ import { AvatarCropperComponent } from '../business-shared/user/avatar-cropper/a
 import { PasswordEditComponent } from '../business-shared/user/password-edit/password-edit.component';
 import { AppService } from '../app.service';
 
+import { HttpService } from '../shared/http/http.service';
+import { UserBusinessService} from '../business-service/user/user-business.service';
+import { ToastService } from '../shared/toast/toast.service';
+import { ToastConfig, ToastType } from '../shared/toast/toast-model';
+import { Utils } from "../shared/util/utils";
+
 /**
  * 主体组件
  */
@@ -382,10 +388,18 @@ export class MainComponent implements OnInit {
   title: string = "首页";
 
 
-  constructor(private router: Router, private modalService: ModalService, private ngbModalService: NgbModal, private appService: AppService) {
-    this.appService.titleEventEmitter.subscribe((value: string) => {
-      if (value) {
-        this.title = value;
+  constructor(
+    private router: Router,
+    private modalService: ModalService, 
+    private ngbModalService: NgbModal, 
+    private appService: AppService,
+    private httpService: HttpService,
+    private userBusinessService: UserBusinessService,
+    private toastService: ToastService) 
+    {
+      this.appService.titleEventEmitter.subscribe((value: string) => {
+        if (value) {
+          this.title = value;
       }
     })
   }
@@ -454,6 +468,23 @@ export class MainComponent implements OnInit {
     let exitSysCfg = new ConfirmConfig('您确定退出系统吗？');
     this.modalService.confirm(exitSysCfg).then((result) => {
       if (result.status == "approved") {
+        let that = this;
+        this.httpService.post(this.userBusinessService.logout(), {}, function (successful, data, res) {
+          if (successful && Utils.resultSuccess(data.resultType)) {
+            const toastCfg = new ToastConfig(ToastType.SUCCESS, '', data.resultMsg, 3000);
+            that.toastService.toast(toastCfg);
+            that.router.navigate(['/login']);
+          }else if(successful && Utils.resultFailure(data.resultType)){
+            const toastCfg = new ToastConfig(ToastType.WARNING, '', data.resultMsg, 3000);
+            that.toastService.toast(toastCfg);
+          }else{
+            const toastCfg = new ToastConfig(ToastType.ERROR, '', data.resultMsg, 3000);
+            that.toastService.toast(toastCfg);
+          }
+        }, function (successful, msg, err) {
+           const toastCfg = new ToastConfig(ToastType.ERROR, '', msg, 3000);
+           that.toastService.toast(toastCfg);
+        });
         this.router.navigate(['/login']);
       }
     }, (reason) => {

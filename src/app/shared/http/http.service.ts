@@ -40,8 +40,10 @@ export class HttpService {
         return this.request(url, new RequestOptions({
             method: RequestMethod.Post,
             body: body,
+            // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials
+            withCredentials: true,
             headers: new Headers({
-                'Content-Type': 'application/json; charset=UTF-8'
+                'Content-Type': 'application/json; charset=UTF-8',
             })
         }), success, error);
     }
