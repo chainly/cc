@@ -18,12 +18,12 @@ export class UserBusinessService {
     return environment.domain + "/api/logout";
   }
 
-  user(id: number){
-    return environment.domain + "/api/user/" + id;
+  user(username: string){
+    return environment.domain + "/api/users/?format=json&username=" + username;
   }
 
-  role(id: number){
-    return environment.domain + "/api/group/" + id;
+  group(groupname: string){
+    return environment.domain + "/api/groups/?format=json&username=" + groupname;
   }
 
 }

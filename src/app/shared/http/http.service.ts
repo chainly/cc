@@ -31,6 +31,7 @@ export class HttpService {
     public get(url: string, paramMap: any = null, success: Function=function(successful, data, res){}, error: Function=function(successful, msg, err){}): any {
         return this.request(url, new RequestOptions({
             method: RequestMethod.Get,
+            withCredentials: true,
             search: HttpService.buildURLSearchParams(paramMap)
         }), success, error);
     }

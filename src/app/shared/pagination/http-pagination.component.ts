@@ -30,7 +30,7 @@ export class HttpPaginationComponent implements OnInit {
     url: string;
 
     @Input()
-    method: string = 'post';
+    method: string = HttpPaginationMethod.GET;
 
     @Input()
     param: any = new Object();
@@ -97,7 +97,7 @@ export class HttpPaginationComponent implements OnInit {
                 that.toastService.toast(toastCfg);
             });
         } else if (Utils.isNotEmpty(this.url)) {
-            this.httpService.post(this.url, serviceData, function (successful, data, res) {
+            this.httpService.get(this.url, serviceData, function (successful, data, res) {
                 if (successful) {
                     that.serverDataProcess(data);
                 } else {
@@ -119,12 +119,24 @@ export class HttpPaginationComponent implements OnInit {
      * @param data 数据
      */
     private serverDataProcess(data: any) {
-        if (data && data.total && data.rows) {
-            this.total = data.total;
-            this.onDataChanged.emit(data.rows);
-        } else {
-            console.error("c-http-pagination,返回的数据格式不正确！");
+        let msg: string = "";
+        let code: number = -1;
+        if (!data || !data.count || !data.results ) {
+            code = ToastType.INFO;
+            msg = "返回的数据空: " + data;
         }
+        if (data && data.count && data.results) {
+            this.total = data.count;
+            code = ToastType.SUCCESS;
+            msg = 'c-http-pagination, loading！';
+            this.onDataChanged.emit(data.results);
+        } else {
+            code = ToastType.WARNING;
+            msg = 'c-http-pagination, 未知错误!' + data;
+            // console.error("c-http-pagination, 返回的数据不正确！！");
+        }
+        const toastCfg = new ToastConfig(code, '', msg, 3000);
+        this.toastService.toast(toastCfg);
     }
 
 

@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  domain: 'http://vpn.opqian.com'
+  domain: 'https://vpn.opqian.com'
 };

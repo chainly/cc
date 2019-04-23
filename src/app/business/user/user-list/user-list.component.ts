@@ -11,129 +11,20 @@ export class UserListComponent  {
 
   @ViewChild('hp', undefined) hp: HttpPaginationComponent;
 
-  url:string="";
+  url:string = "http://127.0.0.1:8000/api/users/?format=json";
 
-  param:any = {
-    name: 'admin',
-    age: 16
-  }
+  param:any = {};
 
-  dataList:Array<any>=[
-    {
-      userName:'user1',
-      realName:'钱一',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user2',
-      realName:'王二',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user3',
-      realName:'张三',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user4',
-      realName:'李四',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user5',
-      realName:'王五',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:'2017-8-1'
-    },
-    {
-      userName:'user1',
-      realName:'钱一',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user2',
-      realName:'王二',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user3',
-      realName:'张三',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user4',
-      realName:'李四',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user5',
-      realName:'王五',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:'2017-8-1'
-    },
-    {
-      userName:'user1',
-      realName:'钱一',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user2',
-      realName:'王二',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user3',
-      realName:'张三',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user4',
-      realName:'李四',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:''
-    },
-    {
-      userName:'user5',
-      realName:'王五',
-      status:'可用',
-      createDate:'2017-8-1',
-      updateDate:'2017-8-1'
-    }
-    
-  ]
+  dataList:Array<any> = [];
 
-  pageList:Array<number>= [15, 25, 35]
+  pageList:Array<number>= [15, 25, 35];
 
-   constructor(private appService: AppService) {
+  constructor(private appService: AppService) {
     this.appService.titleEventEmitter.emit("用户列表");
   }
 
   onDataChanged($event){
     console.info($event)
+    this.dataList = $event
   }
 }

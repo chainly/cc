@@ -2,12 +2,14 @@
 
 ## v1.base
 
-   # workspace
+### workspace
+
    ng new cc
 
-## mark
+### mark
 
-``` 类型: let key: type = value; 
+```markdown
+# 基本类型
 number
 string
 # array
@@ -21,16 +23,36 @@ enum k {k1=v1, k2=v2...}
 # Any, void, undefined, null
 any
 
+# 基本语法
+let key: type = value;
+int += string
+string = "" + int
+
+function Func(key: type): type{
+   emit;
+   return type_value;
+}
+
+() ==> {}  # lambda: 自动将其中的this指代到调用该func的object
+
+interface Object {
+   key1: type1,
+   key2: type2,
+   ...
+}
+
+class Object2 extends SupperObject{
+   public key1: type1;
+   private key2: type2;
+   constructor(k:t...){pass};  # new
+   func(k:t)(pass);
+}
 ```
 
+## base from `https://github.com/332557712/cc`
 
-
-
-
-
-
-
-## CC admin 
+```text
+## CC admin
  一个基于angular5.0.0+ng-bootstrap1.0.0-beta.8+bootstrap4.0.0-beta.2+scss的后台管理系统界面
 
 ## *使用前必读
@@ -85,7 +107,7 @@ http://www.myopenresources.top/cc-client/#/login
    6.1 https://github.com/swimlane/ngx-charts
 7. 添加第三方angular-2-dropdown-multiselect组件与angular2-select组件<br/>
    7.1 https://github.com/softsimon/angular-2-dropdown-multiselect<br/>
-   7.2 https://github.com/basvandenberg/ng-select) 
+   7.2 https://github.com/basvandenberg/ng-select)
 8. 添加层次图组件<br/>
    8.1 src/app/shared/hierarchy-view/hierarchy-view.component.ts
 9. 添加第三方ng2-img-cropper组件<br/>
@@ -189,14 +211,13 @@ http://www.myopenresources.top/cc-client/#/login
     60.1 index.html页面中将link的样式文件./assets/scss/theme/_default.css修改成./assets/scss/theme/_green.css<br/>
     60.2 assets/scss/base/_app-base.scss文件中将import的样式文件./theme/_default.scss修改成./theme/_green.scss <br/>
 61. 添加http-client-service，需要使用的自己在模块加添加<br/>
-    
-    
 
 ## 规范
+
 1. 为避免冲突，应用css使用c-为前缀
 2. 为避免冲突，应用组件selector使用c-为前缀
 3. 目录、文件名命名使用小写字母，多个单词使用-间隔
-4. module结尾的为模块、component结尾的为组件、service结尾的为服务、directive结尾的为指令、pipe结尾的为管道   
+4. module结尾的为模块、component结尾的为组件、service结尾的为服务、directive结尾的为指令、pipe结尾的为管道
 5. 所有模块放在app目录下、所有资源文件放在assets目录下，所有scss文件按模块区分，放在assets/scss/modules下
 
 
@@ -222,7 +243,6 @@ http://www.myopenresources.top/cc-client/#/login
 ## 构建
 1. npm run build                               <---- 使用npm命令构建，构建完成后会在项目中出现一个cc-client目录
 
-
 ## 部署到Tomcat
 1. 首先使用构建命令(npm run build)打包，打包完成后项目中会出现一个cc-client的目录，这个目录就是我们最终要部署的包了。
 2. 将cc-client整个目录复制到Tomcat的webapps目录下。
@@ -230,10 +250,9 @@ http://www.myopenresources.top/cc-client/#/login
 4. 注：<br/>
    4.1 想将默认的cc-client修改成你自己的base路径，打开package.json，修改构建命令build，将cc-client修改成你自己的base路径。<br/>
    4.2 想将打包生成的目录cc-client修改成你自己的名称，打开.angular-cli.json，修改配置outDir，将cc-client修改成你自己的名称。
-       
 
 ## 单元测试
-1. npm test                                    <---- 使用npm命令测试，目前的模块中没有加入测试代码，需要自行添加 
+1. npm test                                    <---- 使用npm命令测试，目前的模块中没有加入测试代码，需要自行添加
 
 
 ## 特别声明
@@ -251,5 +270,4 @@ http://www.myopenresources.top/cc-client/#/login
 
 ## 许可
 1. [MIT](/LICENSE)
-# cc
-cc
+```

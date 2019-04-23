@@ -15,8 +15,8 @@
     Angular CLI: 7.3.8
     Node: 10.15.3
     OS: linux x64
-    Angular: 
-    ... 
+    Angular:
+    ...
 
     Package                      Version
     ------------------------------------------------------
@@ -56,4 +56,21 @@
 ### prod
 
     ng build
-    @TODO: serve as nginx static
+    @TODO: step of serve as nginx static
+
+### todo list
+
+[ ] main function
+    [ ] add `withCredentials: true` to all `HttpService`.method
+    [X] user login/logout with cors cookie set
+    [ ] user info
+    [X] user list
+        [X] get by HttpPaginationComponent
+        [ ] read it
+    [ ] as a service and component
+    [ ]
+    [ ]
+[X] serve as nginx static
+[X] https
+[ ] replace cookie with use token or as part of data or something else
+    [ ] <https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3>
