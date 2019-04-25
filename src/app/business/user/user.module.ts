@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule }       from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import  { PaginationModule}       from '../../shared/pagination/pagination.module';
 
 import { UserRoutingModule } from './user-routing.module';
@@ -14,6 +14,7 @@ import { UserInfoComponent} from './user-info/user-info.component';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     UserRoutingModule,
     PaginationModule
   ],

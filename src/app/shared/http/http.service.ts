@@ -15,6 +15,8 @@ export class HttpService {
     constructor(private http: Http,private spinService:SpinService) {}
 
     public request(url: string, options: RequestOptionsArgs, success: Function, error: Function): any {
+        // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials
+        options["withCredentials"] = true;
         this.spinService.spin(true);
         this.http.request(url, options).subscribe(res => {
             this.spinService.spin(false);
@@ -37,12 +39,9 @@ export class HttpService {
     }
 
     public post(url: string, body: any = null, success: Function=function(successful, data, res){}, error: Function=function(successful, msg, err){}): any {
-
         return this.request(url, new RequestOptions({
             method: RequestMethod.Post,
             body: body,
-            // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials
-            withCredentials: true,
             headers: new Headers({
                 'Content-Type': 'application/json; charset=UTF-8',
             })
@@ -121,17 +120,8 @@ export class HttpService {
      * @param err
      */
     private requestFailed(url: string, options: RequestOptionsArgs, err) {
-        let msg = '请求发生异常', status = err.status;
-        if (status === 0) {
-            msg = '请求失败，请求响应出错';
-        } else if (status === 404) {
-            msg = '请求失败，未找到请求地址';
-        } else if (status === 500) {
-            msg = '请求失败，服务器出错，请稍后再试';
-        } else {
-            msg = "未知错误，请检查网络";
-        }
-
+        let msg = '请求失败', status = err.status;
+        msg = msg + ":" + status + "," + err;
         return msg;
 
     }

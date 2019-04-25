@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  domain: 'https://vpn.opqian.com'
+  // domain: 'https://vpn.opqian.com'
+  domain: 'http://127.0.0.1:8000'
 };

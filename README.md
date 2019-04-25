@@ -34,6 +34,7 @@ function Func(key: type): type{
 }
 
 () ==> {}  # lambda: 自动将其中的this指代到调用该func的object
+that = this # when use this in func of func
 
 interface Object {
    key1: type1,

@@ -26,4 +26,7 @@ export class UserBusinessService {
     return environment.domain + "/api/groups/?format=json&username=" + groupname;
   }
 
+  defaultUser(){
+    return environment.domain + "/api/users/default_user/?format=json";
+  }
 }

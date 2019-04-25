@@ -63,10 +63,13 @@
 [ ] main function
     [ ] add `withCredentials: true` to all `HttpService`.method
     [X] user login/logout with cors cookie set
-    [ ] user info
+    [X] user info
     [X] user list
         [X] get by HttpPaginationComponent
-        [ ] read it
+        [ ] read detail of it
+        [ ] replace with easyui table
+    [X] user add
+    [ ] easyui
     [ ] as a service and component
     [ ]
     [ ]
