@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppService } from '../../../app.service';
 import { ToastService } from '../../../shared/toast/toast.service';
 import { ToastConfig, ToastType } from '../../../shared/toast/toast-model';
@@ -11,11 +12,13 @@ import { UserBusinessService} from '../../../business-service/user/user-business
   selector: 'c-user-add',
   templateUrl: './user-add.component.html'
 })
+
 export class UserAddComponent {
 
   addForm: FormGroup;
 
   constructor(
+    private router: Router,
     private appService: AppService,
     private toastService: ToastService,
     private httpService: HttpService,
@@ -30,9 +33,19 @@ export class UserAddComponent {
       this.appService.titleEventEmitter.emit("用户添加");
   }
 
-
-
   useradd() {
-    
+    this.router.navigate(['/app/userAdd']);
+    return;
+    // let that = this;
+    // if (this.addForm.valid) {
+    //   this.httpService.get(
+    //     this.userBusinessService.defaultUser(), {},
+    //     function(successful, data, res){
+    //       const toastCfg = new ToastConfig(ToastType.SUCCESS, '', data.resultMsg, 3000);
+    //       that.toastService.toast(toastCfg);
+    //       that.router.navigate(['/app/userAdd'])
+    //     }
+    //   );
+    // }
   }
 }
